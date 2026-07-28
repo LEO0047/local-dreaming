@@ -1,0 +1,28 @@
+[
+  {
+    "name": "active project continuity",
+    "category": "continuity",
+    "query": "目前仍在進行的專案",
+    "expected_claim_ids": ["synthetic-active-project"],
+    "forbidden_claim_ids": ["synthetic-superseded-project"]
+  },
+  {
+    "name": "explicit preference",
+    "category": "preference_adherence",
+    "query": "回覆語言偏好",
+    "expected_claim_ids": ["synthetic-language-preference"]
+  },
+  {
+    "name": "new correction wins",
+    "category": "freshness",
+    "query": "最新計畫",
+    "expected_claim_ids": ["synthetic-current-plan"],
+    "forbidden_claim_ids": ["synthetic-old-plan"]
+  },
+  {
+    "name": "secret is never retrieved",
+    "category": "irrelevant_memory_suppression",
+    "query": "credential",
+    "forbidden_claim_ids": ["synthetic-secret"]
+  }
+]

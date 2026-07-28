@@ -1,0 +1,3 @@
+This is a synthetic capability probe. Do not call tools. Return exactly the JSON object required by
+the supplied schema, with ok set to true and nonce copied from the synthetic input.
+Synthetic nonce: {{NONCE}}

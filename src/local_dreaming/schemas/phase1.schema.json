@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "episode_summary": {"type": "string", "maxLength": 2000},
+    "no_op": {"type": "boolean"},
+    "candidate_claims": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {"type": "string", "minLength": 1, "maxLength": 128},
+          "subject": {"type": "string", "minLength": 1, "maxLength": 500},
+          "predicate": {"type": "string", "minLength": 1, "maxLength": 200},
+          "value": {"type": "string", "minLength": 1, "maxLength": 4000},
+          "scope": {
+            "type": "string",
+            "enum": ["user_profile", "project_state", "personal_relationship", "other"]
+          },
+          "epistemic_status": {
+            "type": "string",
+            "enum": ["observed", "stated", "inferred", "disputed", "historical", "outcome_unknown"]
+          },
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "evidence_event_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1, "maxLength": 128}
+          },
+          "valid_from": {"type": ["string", "null"], "maxLength": 64},
+          "valid_to": {"type": ["string", "null"], "maxLength": 64},
+          "possible_supersedes_claim_id": {"type": ["string", "null"], "maxLength": 128}
+        },
+        "required": [
+          "candidate_id",
+          "subject",
+          "predicate",
+          "value",
+          "scope",
+          "epistemic_status",
+          "confidence",
+          "evidence_event_ids",
+          "valid_from",
+          "valid_to",
+          "possible_supersedes_claim_id"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["episode_summary", "no_op", "candidate_claims"],
+  "additionalProperties": false
+}
